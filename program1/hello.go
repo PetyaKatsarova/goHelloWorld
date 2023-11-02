@@ -18,9 +18,15 @@ func divide(divident, divisor float64) (float64, error) {
 	return divident / divisor, nil
 }
 
-type Person struct {}
 
 func main() {
+		// struct
+		var p Person
+		p.Name = "John"
+		p.Age = 42;
+		p.SayHello()
+
+
 	//  pointers
 	a := 5
 	b := &a // b is a pointer to a
