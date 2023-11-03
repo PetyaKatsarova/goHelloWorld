@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"sync"
 )
 
@@ -11,9 +11,9 @@ type Account struct {
 }
 
 // a *Account receiver arg
-func (a *Account) {
+// func (a *Account) {
 
-}
+// }
 
 
 /*

@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func loops() {
 	for i := 0; i < 5; i++ {
 		fmt.Println("tha val of i is:", i)
 	}

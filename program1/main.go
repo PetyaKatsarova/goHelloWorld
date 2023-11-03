@@ -30,6 +30,16 @@ func main() {
 	fn3, sn3 := getInitials("petka")
 	fmt.Println(fn3, sn3)
 
+	// from functions.go
+	cycleNames([]string{"One", "Two", "Three"}, sayHi)
+	a1 := circleArea(10.5)
+	a2 := circleArea(15)
+	fmt.Println(a1, a2)
+	fmt.Printf("circle 1 is %0.3f and circl 2 is %0.3f", a1, a2)
+
+	// from loops.go
+	loops()
+
 		// slices use arrays under the hood: can append to a slice
 		var scores = []int{100, 50, 60}
 		fmt.Println(scores)
