@@ -9,6 +9,13 @@ type Account struct {
 	balance int
 	mutex sync.Mutex
 }
+
+// a *Account receiver arg
+func (a *Account) {
+
+}
+
+
 /*
   sync.Mutex is a synchronization primitive that can be used to ensure that only one goroutine can access a particular section of code at a time. 
  This is used to prevent race conditions, where the outcome of the program execution may change due to the order of operations performed by multiple
@@ -37,3 +44,4 @@ func criticalSection() {
     // ... critical section with shared resource ...
 }
 */
+
