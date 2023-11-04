@@ -2,12 +2,14 @@ package main
 
 import "fmt"
 
+// struct is like interface: just stating the structure of the object
 type bill struct {
 	name string
 	items map[string]float64
 	tip float64
 }
 
+// here create the object
 func newBill(name string) bill {
 	b := bill{
 		name: name,
