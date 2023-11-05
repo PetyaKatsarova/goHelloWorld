@@ -1,0 +1,7 @@
+Bill breakdown: 
+cake:                     ... $5.4
+water:                    ... $4.32
+curry:                    ... $8.8
+cola:                     ... $3.4
+tip:                      ... $5.5
+total:                    ...$27.42

@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -20,7 +21,7 @@ func createBill() bill {
 	return b
 }
 
-func promptOptions(b bill) {
+func promptOptions(b *bill){
 	reader := bufio.NewReader(os.Stdin)
 	opt, _ := getInput("Choose option (a - add item, s - save bill, t - add tip): ", reader)
 
@@ -28,21 +29,36 @@ func promptOptions(b bill) {
 	case "a":
 		name, _ := getInput("Item name: ", reader)
 		price, _ := getInput("Item price: ", reader)
-		fmt.Println(name, price)
+		p, err := strconv.ParseFloat(price, 64)
+		if err != nil {
+			fmt.Println("The price must be a number")
+			promptOptions(b)
+		}
+		b.addItem(name, p)
+		fmt.Println("Item added - ", name, price)
+		promptOptions((b))
 	case "t":
 		tip, _ := getInput("Enter tip amount ($): ", reader)
-		fmt.Println(tip)
+		t, err := strconv.ParseFloat(tip, 64)
+		if err != nil {
+			fmt.Println("The tip must be a number")
+			promptOptions(b)
+		}
+		b.updateTip(t)
+		fmt.Println("tip added - ", tip)
+		promptOptions(b)
 	case "s":
-		fmt.Println("you chose s")
+		b.save()
+		fmt.Println("u saved the file - ", b.name)
 	default:
 		fmt.Println("that was not a valid option...")
-		
+		promptOptions(b)
 	}
 }
 
 func main() {
 	mybill := createBill()
-	promptOptions(mybill)
-	fmt.Println(mybill)
+	promptOptions(&mybill) // &mybill: get the address of mybill: this way we operate on hte same bill object  through main and promptOPtions()
+	fmt.Println(mybill.format())
 }
 

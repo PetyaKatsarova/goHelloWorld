@@ -1,0 +1,4 @@
+Bill breakdown: 
+cola:                     ... $2.2
+tip:                      ... $4.4
+total:                    ...$6.60

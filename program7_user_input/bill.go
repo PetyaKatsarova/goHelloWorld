@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 // struct is like interface: just stating the structure of the object
 type bill struct {
@@ -29,7 +32,7 @@ func (b *bill) format() string {
 		fs += fmt.Sprintf("%-25v ... $%v\n", k+":", v) // all chars will take 25 chars
 		total += v
 	}
-	fs += fmt.Sprintf("%-25v ... $%v\n", "tip:", b.tip)
+	fs += fmt.Sprintf("%-25v ... $%v\n", "tip:", b.tip) // why doesnt update the tip???
 	fs += fmt.Sprintf("%-25v ...$%0.2f", "total:", total + b.tip)
 	return fs
 }
@@ -43,4 +46,14 @@ func (b *bill) updateTip(tip float64) {
 // add an item to the bill
 func (b *bill) addItem(name string, price float64) {
 	(*b).items[name] = price;
+}
+
+func (b *bill) save() {
+	data := []byte(b.format())
+
+	err := os.WriteFile("bills/"+b.name+".txt", data, 0644) // 0644 permissions, this returns an error
+	if err != nil {
+		panic(err) // stops the flow of the program
+	}
+	fmt.Println("bill was saved to file")
 }
