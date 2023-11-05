@@ -10,6 +10,7 @@ func main() {
 	go f1("F2")
 	fmt.Println("Sleeping for 5 sec")
 	time.Sleep(5 * time.Second)
+	fmt.Println("Main completed")
 }
 
 func f1(name string) {
